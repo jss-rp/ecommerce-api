@@ -1,9 +1,9 @@
 package jss.ecommerce.api.repository;
 
-import jss.ecommerce.api.entity.Fabricante;
+import jss.ecommerce.api.entity.Fabrica;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FabricanteRepository extends CrudRepository<Fabricante, Long> {
+public interface FabricaRepository extends CrudRepository<Fabrica, Long> {
 }

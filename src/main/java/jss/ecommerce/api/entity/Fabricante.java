@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "FABRICANTES")
 public class Fabricante {
 
     @Id

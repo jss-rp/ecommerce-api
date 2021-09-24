@@ -1,5 +1,6 @@
 package jss.ecommerce.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +9,6 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "LOTES")
 public class Lote {
 
     @Id
@@ -19,6 +19,7 @@ public class Lote {
     @JoinColumn(columnDefinition = "produto_id")
     private Produto produto;
 
+    @JsonProperty("data_fabricacao")
     private LocalDate dataFabricao;
     private LocalDate validade;
 

@@ -1,12 +1,12 @@
 package jss.ecommerce.api.entity;
 
+import jss.ecommerce.api.util.LocalidadeToJSONConverter;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "FABRICAS")
 public class Fabrica {
 
     @Id
@@ -17,11 +17,7 @@ public class Fabrica {
     @JoinColumn(columnDefinition = "fabricante_id")
     private Fabricante fabricante;
 
-    @ManyToOne
-    @JoinColumn(columnDefinition = "cidade_id")
-    private Cidade cidade;
-
-    private String cep;
-    private String logradouro;
-    private String complemento;
+    @Column(columnDefinition = "json")
+    @Convert(converter = LocalidadeToJSONConverter.class)
+    private Localidade localidade;
 }
