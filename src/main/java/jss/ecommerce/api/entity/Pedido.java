@@ -21,4 +21,8 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "pedido_status_id")
+    private PedidoStatus status;
 }
