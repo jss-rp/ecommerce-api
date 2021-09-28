@@ -9,6 +9,7 @@ public class ProdutoDTO {
 
     private Long id;
     private String nome;
+    private String sku;
 
     @JsonProperty("fabricante_id")
     private Long fabricanteId;
@@ -19,5 +20,6 @@ public class ProdutoDTO {
         id = produto.getId();
         nome = produto.getNome();
         fabricanteId = produto.getFabricante().getId();
+        sku = produto.getSku();
     }
 }
