@@ -3,6 +3,7 @@ package jss.ecommerce.api.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Data
 @Entity
@@ -16,7 +17,7 @@ public class Pedido {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    private Integer quantidade;
+    private BigInteger quantidade;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

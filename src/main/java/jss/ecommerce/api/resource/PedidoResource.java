@@ -4,6 +4,7 @@ import jss.ecommerce.api.entity.Pedido;
 import jss.ecommerce.api.entity.PedidoStatus;
 import jss.ecommerce.api.repository.PedidoRepository;
 import jss.ecommerce.api.repository.PedidoStatusRepository;
+import jss.ecommerce.api.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.NoResultException;
@@ -23,6 +24,9 @@ public class PedidoResource {
 
     @Autowired
     private PedidoStatusRepository pedidoStatusRepository;
+
+    @Autowired
+    private PedidoService pedidoService;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -91,14 +95,12 @@ public class PedidoResource {
     @PUT
     @Path("{id}/status")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response changeStatus(@PathParam("id") Long id, PedidoStatus pedidoStatus) {
+    public Response changeStatus(@PathParam("id") Long pedidoId, PedidoStatus pedidoStatus) {
         try {
-            final Pedido pedido = pedidoRepository.findById(id)
+            final Pedido pedido = pedidoRepository.findById(pedidoId)
                     .orElseThrow(() -> new NoResultException("Pedido não encontrado"));
 
-            pedido.setStatus(pedidoStatus);
-
-            pedidoRepository.save(pedido);
+            pedidoService.mudarStatus(pedidoId, pedidoStatus);
 
             return Response.status(Response.Status.ACCEPTED)
                     .entity(pedidoStatus)
